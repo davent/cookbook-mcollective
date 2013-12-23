@@ -42,6 +42,13 @@ default['mcollective']['stomp']['port'] = "6163"
 default['mcollective']['stomp']['username'] = "mcollective"
 default['mcollective']['stomp']['password'] = "marionette"
 
+default['mcollective']['stomp']['ssl']['enabled'] = false
+default['mcollective']['stomp']['ssl']['port'] = "6164"
+default['mcollective']['stomp']['ssl']['ca'] = "/etc/ssl/certs/cacert.pem"
+default['mcollective']['stomp']['ssl']['cert'] = "/etc/ssl/certs/cert.pem"
+default['mcollective']['stomp']['ssl']['key'] = "/etc/ssl/certs/key.pem"
+default['mcollective']['stomp']['ssl']['fallback'] = false
+
 # MCollective Identity and collective membership
 default['mcollective']['identity']        = node['fqdn']
 default['mcollective']['main_collective'] = "mcollective"

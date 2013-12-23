@@ -1,7 +1,13 @@
 pool.size = 1
 pool.1.host = <%= @stomp['hostname'] %>
-pool.1.port = <%= @stomp['port'] %>
+pool.1.port = <%= @stomp['port'] unless @stomp['ssl']['enabled'] %><%= @stomp['ssl']['port'] if @stomp['ssl']['enabled'] %>
 pool.1.user = <%= @stomp['username'] %>
 pool.1.password = <%= @stomp['password'] %>
+
+pool.1.ssl = <%= "1" if @stomp['ssl']['enabled'] %><%= "0" unless @stomp['ssl']['enabled'] %>
+pool.1.ssl.ca = <%= @stomp['ssl']['ca'] %>
+pool.1.ssl.cert = <%= @stomp['ssl']['cert'] %>
+pool.1.ssl.key = <%= @stomp['ssl']['key'] %>
+pool.1.ssl.fallback = <%= "1" if @stomp['ssl']['fallback'] %><%= "0" unless @stomp['ssl']['fallback'] %>
 
 vhost = <%= @rabbitmq['vhost'] %>

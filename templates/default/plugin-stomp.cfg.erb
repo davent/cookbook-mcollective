@@ -1,4 +1,10 @@
 host = <%= @stomp['hostname'] %>
-port = <%= @stomp['port'] %>
+port = <%= @stomp['port'] unless @stomp['ssl']['enabled'] %><%= @stomp['ssl']['port'] if @stomp['ssl']['enabled'] %>
 user = <%= @stomp['username'] %>
 password = <%= @stomp['password'] %>
+
+ssl = <%= "1" if @stomp['ssl']['enabled'] %><%= "0" unless @stomp['ssl']['enabled'] %>
+ssl.ca = <%= @stomp['ssl']['ca'] %>
+ssl.cert = <%= @stomp['ssl']['cert'] %>
+ssl.key = <%= @stomp['ssl']['key'] %>
+ssl.fallback = <%= "1" if @stomp['ssl']['fallback'] %><%= "0" unless @stomp['ssl']['fallback'] %>
